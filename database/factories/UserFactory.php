@@ -32,6 +32,7 @@ $factory->define(App\Vendor::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'website' => $faker->unique()->safeEmail,
         'cin_no'=>$faker->randomNumber(),
+        'type' => rand(1,2)
     ];
 });
 $factory->define(App\Items::class, function (Faker $faker) {
@@ -50,7 +51,6 @@ $factory->define(App\Stocks::class, function (Faker $faker) {
             return factory(App\Items::class)->create()->id;
             },
         'vendor_id' => function(){
-
             return factory(App\Vendor::class)->create()->id;
         },
         'batch_no' => $faker->randomNumber(),
@@ -63,7 +63,7 @@ $factory->define(App\Bills::class, function (Faker $faker) {
     return [
         'customer_id' => function(){
 
-            return factory(App\Items::class)->create()->id;
+            return factory(App\Vendor::class)->create()->id;
         },
         'total_amount' =>$faker->numberBetween(0,3),
         'cgst_amount' =>$faker->numberBetween(0,3),
@@ -81,16 +81,14 @@ $factory->define(App\Bills::class, function (Faker $faker) {
 $factory->define(App\Bill_items::class, function (Faker $faker) {
     return [
         'bill_id' => function(){
-
-            return factory(App\Bills::class)->create()->id;
+            return rand(1, 50);
         },
         'item_id' => function(){
 
             return factory(App\Items::class)->create()->id;
         },
         'stock_id' => function(){
-
-            return factory(App\Stocks::class)->create()->id;
+            return rand(1, 100);
         },
         'quantity'=>$faker->numberBetween(0,3),
         'rate'=>$faker->numberBetween(0,3),
