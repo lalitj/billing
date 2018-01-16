@@ -26,6 +26,7 @@ class CreateBillsTable extends Migration
             $table->float('coin_adjustment');
             $table->float('net_amount');
             $table->date('bill_date');
+            $table->string('type');
             $table->timestamps();
         });
     }
