@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ItemsController extends CRUDController
+class VendorController extends CRUDController
 {
     //
     public function init(){
 
-        $this->model = "Items";
-        $this->action = "items";
+        $this->model = "Vendor";
+        $this->action = "vendor";
         $this->redirect = ""; // /bill/items/1/
     }
 }

@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/bill', 'BillItemsController@bill');
+//Route::post('/bills', 'BillItemsController@store');
+//Route::post('/bills', 'BillItemsController@store');
+
+
+Route::resource("bill", "BillsController");
+Route::resource("bill-items", "BillItemsController");
+Route::resource("vendor", "VendorController");
+Route::resource("items", "ItemsController");
+Route::resource("stocks", "StocksController");
+Route::get("bill/items/{bill}", "BillItemsController@create");
+

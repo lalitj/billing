@@ -16,7 +16,7 @@ class CreateBillItemsTable extends Migration
         Schema::create('bill_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('bill_id');
-            $table->integer('item_id');
+            //$table->integer('item_id')->nullable();
             $table->integer('stock_id');
             $table->integer('quantity');
             $table->float('rate');

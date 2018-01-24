@@ -16,17 +16,17 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id');
-            $table->float('total_amount');
-            $table->float('cgst_amount');
-            $table->float('sgst_amount');
-            $table->float('gst_5_amount');
-            $table->float('gst_12_amount');
-            $table->float('gst_18_amount');
-            $table->float('gst_28_amount');
-            $table->float('coin_adjustment');
-            $table->float('net_amount');
+            $table->float('total_amount')->nullable();
+            $table->float('cgst_amount')->nullable();
+            $table->float('sgst_amount')->nullable();
+            $table->float('gst_5_amount')->nullable();
+            $table->float('gst_12_amount')->nullable();
+            $table->float('gst_18_amount')->nullable();
+            $table->float('gst_28_amount')->nullable();
+            $table->float('coin_adjustment')->nullable();
+            $table->float('net_amount')->nullable();
             $table->date('bill_date');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
