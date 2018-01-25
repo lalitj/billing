@@ -14,6 +14,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    @if($flash_success = session('success'))
+        <div id="flash-message" class="alert alert-success">
+            {!! $flash_success !!}
+
+        </div>
+    @endif
+
+    <div id="flash-success-box" class="alert alert-success hide"></div>
+    <div id="flash-error-box" class="alert alert-dander hide"></div>
+
+    @if($flash_error = session('error'))
+        <div class="alert alert-danger">
+            {{$flash_error}}
+        </div>
+    @endif
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

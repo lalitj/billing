@@ -11,6 +11,6 @@ class StocksController extends CRUDController
 
         $this->model = "Stocks";
         $this->action = "stocks";
-        $this->redirect = ""; // /bill/items/1/
+        $this->redirect = "/stocks/create"; // /bill/items/1/
     }
 }

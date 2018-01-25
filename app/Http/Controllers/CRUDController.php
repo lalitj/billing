@@ -53,13 +53,19 @@ class CRUDController extends Controller
     public function store(Request $request)
     {
         $this->init();
-        $model = "App\\".$this->model;
+        $model = "App\\" . $this->model;
+        $view = $this->model;
 
         $data = $model::create(request()->all());
-        if($this->redirect){
+        /*if($this->redirect){
+
             return redirect($this->redirect);
-        }
-        return $data;
+        }*/
+        /* return $data;*/
+
+            session()->flash('success', " $view Added successfully");
+            return redirect($this->redirect);
+
     }
 
     /**

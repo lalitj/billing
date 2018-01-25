@@ -11,6 +11,6 @@ class ItemsController extends CRUDController
 
         $this->model = "Items";
         $this->action = "items";
-        $this->redirect = ""; // /bill/items/1/
+        $this->redirect = "/items/create"; // /bill/items/1/
     }
 }

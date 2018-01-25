@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Stocks extends Model
+class Stocks extends CRUDModel
 {
     public $guarded = [];
 
@@ -14,14 +14,14 @@ class Stocks extends Model
            'item_id' => [
                "type" => "select",
                "label" => "Item id",
-               "options" => [1,2,3],
+               "options" => Items::array_data("product_name"),
                "text" => "",
                "value" => []
            ],
             'vendor_id' => [
                 "type" => "select",
                 "label" => "Vendor Id",
-                "options" => [1,2,3],
+                "options" => Vendor::array_data(),
                 "text" => "",
                 "value" => []
             ],
