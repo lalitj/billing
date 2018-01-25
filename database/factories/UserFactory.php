@@ -83,10 +83,10 @@ $factory->define(App\Bill_items::class, function (Faker $faker) {
         'bill_id' => function(){
             return rand(1, 50);
         },
-        'item_id' => function(){
+        /*'item_id' => function(){
 
             return factory(App\Items::class)->create()->id;
-        },
+        },*/
         'stock_id' => function(){
             return rand(1, 100);
         },

@@ -47,7 +47,7 @@ class Stocks extends Model
             ],
             'mrp' => [
                 "type" => "number",
-                "label" => "mrp",
+                "label" => "MRP",
                 "placeholder" => "",
                 "text" => "",
                 "value" => ""

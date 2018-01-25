@@ -18,8 +18,9 @@
             text-align: left;
         }
     </style>
+    <div class="container">
     <div class="col-sm-8 blog-main">
-        <h1> Add :<strong> {{--{{$project->name}}--}} </strong></h1>
+        <h1> Add {{$view}}<strong> {{--{{$project->name}}--}} </strong></h1>
 
 
         <div class="panel panel-default">
@@ -134,5 +135,7 @@
                 </form>--}}
             </div>
         </div>
+    </div>
+
     </div>
 @endsection()

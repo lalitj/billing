@@ -63,6 +63,18 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="/items/create">Add Items</a>
+                                    </li>
+                                    <li>
+                                        <a href="/stocks/create">Add Stocks</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bill/create">Add Bills</a>
+                                    </li>
+                                  {{--  <li>
+                                        <a href="/bill-items/create">Add Bill-Items</a>
+                                    </li>--}}
                                 </ul>
                             </li>
                         @endguest

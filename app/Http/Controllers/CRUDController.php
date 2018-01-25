@@ -35,11 +35,13 @@ class CRUDController extends Controller
         $this->init();
 
         $model = "App\\".$this->model;
-        $action = $this->action;
+         $action = $this->action;
+         $view=$this->model;
+
         $form = $model::form();
 
 
-        return view('forms.add',compact( "form", 'action'));
+        return view('forms.add',compact( "form", 'action','view'));
     }
 
     /**
@@ -68,7 +70,7 @@ class CRUDController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

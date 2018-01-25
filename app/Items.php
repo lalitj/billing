@@ -30,7 +30,7 @@ class Items extends Model
             ],
             'packing' => [
                 "type" => "text",
-                "label" => "packing",
+                "label" => "Packing",
                 "placeholder" => "",
                 "text" => "",
                 "value" => ""
