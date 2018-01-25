@@ -35,7 +35,7 @@
 
                             @if($field['type'] == "select")
 
-                                <select name="{{$name}}" class="form-control" id="">
+                                <select name="{{$name}}" class="form-control @if(isset($field['class'])){{$field['class']}}@endif" id="@if(isset($field['id'])){{$field['id']}}@endif">
                                     @foreach($field['options'] as $value => $label)
                                         <option @if($field['value'] == $value) selected @endif value="{{$value}}">{{$label}}</option>
                                     @endforeach
@@ -55,6 +55,11 @@
                                     <input type="checkbox" name="{{$name}}" class="form-check-input" id="" value="1" @if($field['value'] == 1) checked @endif>
                                     {{--&nbsp;<label class="form-check-label" for="exampleCheck1">{{$field['label']}}</label>--}}
                                 </div>
+
+                            @elseif($field['type'] == "autocomplete")
+
+
+                                <input type="text" name="{{$name}}" value="{{$field['value']}}" id="search-bar" class="form-control" aria-describedby="" placeholder="{{$field['placeholder']}}">
 
                             @else
 

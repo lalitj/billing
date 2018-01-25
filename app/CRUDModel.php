@@ -23,7 +23,7 @@ class CRUDModel extends Model
         }*/
 
         $data = static::select($name, 'id')->get();
-        $new_data = [];
+        $new_data = ["" => "Select"];
         foreach($data as $item){
             $new_data[$item->id] = $item->$name;
         }

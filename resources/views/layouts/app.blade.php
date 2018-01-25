@@ -14,7 +14,10 @@
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
           crossorigin="anonymous">--}}
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/selectize.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/selectize.bootstrap3.css') }}" rel="stylesheet" />
 
 </head>
 <body>
@@ -108,7 +111,62 @@
         @yield('content')
     </div>
 
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/selectize.js') }}"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $.widget( "custom.catcomplete", $.ui.autocomplete, {
+            _create: function() {
+                this._super();
+                this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
+            },
+            _renderMenu: function( ul, items ) {
+
+                var that = this,
+                    currentCategory = "";
+                $.each( items, function( index, item ) {
+                    var li;
+                    if ( item.category != currentCategory ) {
+                        ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+                        currentCategory = item.category;
+                    }
+                    li = that._renderItemData( ul, item );
+                    if ( item.category ) {
+                        li.attr( "aria-label", item.category + " : " + item.label);
+                    }
+
+                });
+            }
+
+        });
+        /*var data = [
+            { label: "anders", category: "" },
+            { label: "andreas", category: "" },
+            { label: "antal", category: "" },
+            { label: "annhhx10", category: "Products" },
+            { label: "annk K12", category: "Products" },
+            { label: "annttop C13", category: "Products" },
+            { label: "anders andersson", category: "People" },
+            { label: "andreas andersson", category: "People" },
+            { label: "andreas johnson", category: "People" }
+        ];*/
+
+        $( "#search-bar" ).catcomplete({
+            delay: 0,
+            source: "/search-ajax",
+            select: function( event, ui ) {
+                window.location.href = "/task/"+ ui.item.id
+                return false;
+            },
+            minLength: 2
+        });
+        $('.selectize').selectize({
+            create: true,
+            sortField: 'text'
+        });
+    </script>
 </body>
 </html>

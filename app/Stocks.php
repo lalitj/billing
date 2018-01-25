@@ -13,20 +13,22 @@ class Stocks extends CRUDModel
         $form = [
            'item_id' => [
                "type" => "select",
-               "label" => "Item id",
+               "label" => "Item",
                "options" => Items::array_data("product_name"),
                "text" => "<a href='/items/create'>Add Item</a>",
                "text-class" => "text-right d-block",
                "value" => [],
-               "required" => "true"
+               "required" => "true",
+               "class" => "selectize"
            ],
             'vendor_id' => [
                 "type" => "select",
-                "label" => "Vendor Id",
+                "label" => "Vendor",
                 "options" => Vendor::array_data(),
                 "text" => "<a href='/vendor/create'>Add Vendor</a>",
                 "text-class" => "text-right d-block",
-                "value" => []
+                "value" => [],
+                "class" => "selectize"
             ],
             'batch_no' => [
                 "type" => "text",
