@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Stocks::class, 100)->create();
         factory(App\Bills::class, 50)->create();
         factory(App\Bill_items::class, 500)->create();
+        factory(App\Vendor::class, 50)->create();
         //factory(App\Bills::class,3)->create();
         //$bills->each(function ($bills) { factory('App\Bill_items' ,3)->create(['bill_id' => $bills->id,'stock_id' => $stocks->id]); });
        // factory(App\Bill_items::class,4)->create();

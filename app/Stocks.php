@@ -15,14 +15,17 @@ class Stocks extends CRUDModel
                "type" => "select",
                "label" => "Item id",
                "options" => Items::array_data("product_name"),
-               "text" => "",
-               "value" => []
+               "text" => "<a href='/items/create'>Add Item</a>",
+               "text-class" => "text-right d-block",
+               "value" => [],
+               "required" => "true"
            ],
             'vendor_id' => [
                 "type" => "select",
                 "label" => "Vendor Id",
                 "options" => Vendor::array_data(),
-                "text" => "",
+                "text" => "<a href='/vendor/create'>Add Vendor</a>",
+                "text-class" => "text-right d-block",
                 "value" => []
             ],
             'batch_no' => [
@@ -30,7 +33,8 @@ class Stocks extends CRUDModel
                 "label" => "Batch No",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
             'exp_date' => [
                 "type" => "date",
@@ -43,14 +47,16 @@ class Stocks extends CRUDModel
                 "label" => "Quantity",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                 "required" => true
             ],
             'mrp' => [
                 "type" => "number",
                 "label" => "MRP",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
 
         ];

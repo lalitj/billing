@@ -11,6 +11,7 @@ class CRUDController extends Controller
     public $form = [];
     public $model = "";
     public $action = "";
+    public $required_fields = "";
 
     public function init(){
 
@@ -53,8 +54,11 @@ class CRUDController extends Controller
     public function store(Request $request)
     {
         $this->init();
+
         $model = "App\\" . $this->model;
         $view = $this->model;
+
+        $this->validate(request(), $model::required_fields());
 
         $data = $model::create(request()->all());
         /*if($this->redirect){

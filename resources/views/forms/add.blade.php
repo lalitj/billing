@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+    <link rel="stylesheet" href="">
 
 
 
@@ -63,10 +63,14 @@
                             @endif
 
                             @if(isset($field['text']))
-                            <small id="emailHelp" class="form-text text-muted">{{$field['text']}}</small>
+                            <small id="emailHelp" class="form-text text-muted @if(isset($field['text-class'])) {{$field['text-class']}} @endif">{!! $field['text'] !!}</small>
                             @endif
 
-
+                            @if ($errors->has($name))
+                                <span class="text-muted text-danger">
+                                        <strong>{{ $errors->first($name) }}</strong>
+                                    </span>
+                            @endif
 
                         </div>
 

@@ -11,7 +11,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     @if($flash_success = session('success'))
@@ -86,6 +90,9 @@
                                     </li>
                                     <li>
                                         <a href="/bill/create">Add Bills</a>
+                                    </li>
+                                    <li>
+                                        <a href="/customer/create">Add Customers</a>
                                     </li>
                                   {{--  <li>
                                         <a href="/bill-items/create">Add Bill-Items</a>

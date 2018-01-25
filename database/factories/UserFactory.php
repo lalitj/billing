@@ -63,7 +63,7 @@ $factory->define(App\Bills::class, function (Faker $faker) {
     return [
         'customer_id' => function(){
 
-            return factory(App\Vendor::class)->create()->id;
+            return factory(App\Customer::class)->create()->id;
         },
         'total_amount' =>$faker->numberBetween(0,3),
         'cgst_amount' =>$faker->numberBetween(0,3),
@@ -95,5 +95,19 @@ $factory->define(App\Bill_items::class, function (Faker $faker) {
         'discount'=>$faker->numberBetween(0,3),
         'gst'=>$faker->numberBetween(0,3),
         'amount'=>$faker->numberBetween(0,3),
+    ];
+});
+$factory->define(App\Customer::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'address'=>$faker->address,
+        'city'=>$faker->city,
+        'state'=>$faker->name,
+        'tel'=>$faker->phoneNumber,
+        'fax'=>$faker->randomNumber(),
+        'email' => $faker->unique()->safeEmail,
+        'website' => $faker->unique()->safeEmail,
+        'cin_no'=>$faker->randomNumber(),
+        'type' => rand(1,2)
     ];
 });

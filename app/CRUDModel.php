@@ -31,4 +31,17 @@ class CRUDModel extends Model
         return $new_data;
 
     }
+
+    static function required_fields(){
+        $form = static::form();
+        $required_fields = [];
+        foreach($form as $key => $item){
+
+            if(isset($item['required']) && $item['required']){
+                $required_fields[$key] = "required";
+            }
+        }
+
+        return $required_fields;
+    }
 }

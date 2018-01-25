@@ -14,9 +14,10 @@ class Bills extends CRUDModel
             'customer_id' => [
                 "type" => "select",
                 "label" => "Customer",
-                "options" => [1, 2],
-                "text" => "",
-                "value" => "1"
+                "options" =>  Customer::array_data(),
+                "text" => "<a href='/customer/create'>Add Customer</a>",
+                "text-class" => "text-right d-block",
+                "value" => []
             ],
             'bill_date' => [
                 "type" => "date",
