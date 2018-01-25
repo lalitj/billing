@@ -15,49 +15,56 @@ class Customer extends CRUDModel
                 "label" => "Name",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                 "required" => true
             ],
             'address' => [
                 "type" => "text",
                 "label" => "Address",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
             'city' => [
                 "type" => "text",
                 "label" => "City",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
             'state' => [
                 "type" => "text",
                 "label" => "State",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
             'tel' => [
                 "type" => "number",
                 "label" => "Telephone",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
             'fax' => [
                 "type" => "text",
                 "label" => "Fax",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+
             ],
             'email' => [
                 "type" => "text",
                 "label" => "email",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
             'website' => [
                 "type" => "text",
@@ -71,7 +78,8 @@ class Customer extends CRUDModel
                 "label" => "Cin number",
                 "placeholder" => "",
                 "text" => "",
-                "value" => ""
+                "value" => "",
+                "required" => true
             ],
         ];
 
