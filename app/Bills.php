@@ -31,4 +31,10 @@ class Bills extends CRUDModel
 
         return $form;
     }
+
+    public function BillItems(){
+
+        return $this->hasMany(BillItems::class, 'bill_id');
+
+    }
 }
