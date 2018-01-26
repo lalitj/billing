@@ -87,4 +87,10 @@ class Bill_items extends CRUDModel
 
         return $form;
     }*/
+   /* public function Stocks(){
+
+        return $this->hasOne(Stocks::class, 'stock_id');
+
+
+    }*/
 }

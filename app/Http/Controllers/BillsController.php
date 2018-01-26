@@ -29,10 +29,17 @@ class BillsController extends CRUDController
     public function print_output(Bills $bills){
 
         //return $bills;
-        return $bills->BillItems;
+         // $bills->BillItems;
+        // return $bills->Stocks;
         //return $data;
-        return $bill = $bills;
+
+        $bill = $bills;
+       /* return $bill->customer->gst_no;*/
+        /*foreach($bill->BillItems as $item){
+            return $item->stocks->items;
+        }*/
         return view('billing',compact('bill'));
     }
+
 
 }

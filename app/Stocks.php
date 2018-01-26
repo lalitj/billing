@@ -66,4 +66,11 @@ class Stocks extends CRUDModel
     
         return $form;
     }
+
+    public function items(){
+
+        return $this->hasOne(Items::class, 'id', 'item_id');
+
+
+    }
 }

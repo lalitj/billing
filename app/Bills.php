@@ -36,5 +36,12 @@ class Bills extends CRUDModel
 
         return $this->hasMany(BillItems::class, 'bill_id');
 
+        }
+    public function customer(){
+
+        return $this->hasOne(Customer::class, 'id','customer_id');
+
     }
+
+
 }

@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('packing');
             $table->integer('hsn_code');
             $table->string('mfg_code');
+            $table->string('gst');
             $table->timestamps();
         });
     }

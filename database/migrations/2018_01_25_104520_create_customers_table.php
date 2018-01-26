@@ -24,6 +24,8 @@ class CreateCustomersTable extends Migration
             $table->string('email');
             $table->string('website');
             $table->string('cin_no');
+            $table->string('dl_no');
+            $table->string('gst_no');
             $table->tinyInteger('type')->nullable();
             $table->timestamps();
         });
