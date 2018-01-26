@@ -21,8 +21,8 @@ class Bills extends CRUDModel
             ],
             'bill_date' => [
                 "type" => "date",
-                "label" => "Bill Date",
-                "placeholder" => "Enter Bill Date",
+                "label" => "Bills Date",
+                "placeholder" => "Enter Bills Date",
                 "text" => "",
                 "value" => date("Y-m-d")
             ]

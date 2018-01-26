@@ -30,4 +30,5 @@ Route::resource("vendor", "VendorController");
 Route::resource("items", "ItemsController");
 Route::resource("stocks", "StocksController");
 Route::get("bill/items/{bill}", "BillItemsController@create");
+Route::get("bill/print/{bills}", "BillsController@print_output");
 

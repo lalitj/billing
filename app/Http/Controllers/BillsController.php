@@ -26,4 +26,13 @@ class BillsController extends CRUDController
         return $data;
     }
 
+    public function print_output(Bills $bills){
+
+        //return $bills;
+        return $bills->BillItems;
+        //return $data;
+        return $bill = $bills;
+        return view('billing',compact('bill'));
+    }
+
 }
