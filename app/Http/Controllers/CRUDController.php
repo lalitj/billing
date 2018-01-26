@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bills;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CRUDController extends Controller
 {
@@ -116,4 +117,66 @@ class CRUDController extends Controller
     {
         //
     }
+
+    public function search_ajax(){
+
+        $search = request('term');
+
+
+        /*if(Gate::denies('only-team')){
+            abort(403, 'Sorry, not Sorry.');
+        }*/
+
+        /*if (isset($_GET['search'])) {
+            return redirect("/search/" . $_GET['search']);
+        }*/
+
+        /*$user_id = request('user_id');
+        if (!$user_id) $user_id = auth()->id();
+
+        $user = User::find($user_id);
+        $current_working = $user->current_working($user);*/
+
+        //ready for deploy, In Development, ready for development
+
+        if(env('DB_CONNECTION') == "pgsql"){
+            $like_operator = "ilike";
+        } else {
+            $like_operator = "like";
+        }
+
+        $this->init();
+
+        $model = "App\\" . $this->model;
+        $field = "product_name";
+
+        $data = $model::where($field, $like_operator, "%$search%")
+
+            //->orderBy('project_id', 'asc')
+            //->orderBy('priority', 'desc')
+            //->orderBy('order', 'desc')
+            ->orderBy($field, 'desc')
+            ->limit(20)
+            ->get();
+        $output = [];
+
+        foreach($data as $item){
+            $label = $item->$field;
+            if(strlen($label) > 50) {
+                $label = substr($item->$field, 0, 50) . "... ";
+            }
+            //$label .= " - ".Task::statuses()[$item->status];
+            $output[] = [
+                "label" => $label,
+                //"category" => $item->project->name,
+                "id" => $item->id,
+                //"status" => $item->status
+            ];
+        }
+        return $output;
+
+
+
+    }
+
 }

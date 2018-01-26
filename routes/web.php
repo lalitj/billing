@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,9 @@ Route::resource("customer", "CustomerController");
 Route::resource("bill-items", "BillItemsController");
 Route::resource("vendor", "VendorController");
 Route::resource("items", "ItemsController");
+Route::get('search-ajax','ItemsController@search_ajax');
 Route::resource("stocks", "StocksController");
+
 Route::get("bill/items/{bill}", "BillItemsController@create");
 Route::get("bill/print/{bills}", "BillsController@print_output");
 
