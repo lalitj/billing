@@ -34,3 +34,8 @@ Route::resource("stocks", "StocksController");
 Route::get("bill/items/{bill}", "BillItemsController@create");
 Route::get("bill/print/{bills}", "BillsController@print_output");
 
+
+ Route::get('csv/{table}', "CRUDController@csv");
+ Route::get('form', function () {
+     return view('form');
+ });

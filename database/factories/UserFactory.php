@@ -42,6 +42,7 @@ $factory->define(App\Items::class, function (Faker $faker) {
         'packing' => $faker->randomNumber(),
         'hsn_code' => $faker->randomDigit,
         'mfg_code' => $faker->name,
+        'gst' => $faker->numberBetween(5,10),
     ];
 });
 $factory->define(App\Stocks::class, function (Faker $faker) {
@@ -108,6 +109,8 @@ $factory->define(App\Customer::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'website' => $faker->unique()->safeEmail,
         'cin_no'=>$faker->randomNumber(),
+        'dl_no'=>$faker->randomNumber(),
+        'gst_no'=>$faker->randomNumber(),
         'type' => rand(1,2)
     ];
 });

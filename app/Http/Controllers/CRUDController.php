@@ -118,6 +118,29 @@ class CRUDController extends Controller
         //
     }
 
+    public function csv($table)
+    {
+        if (($handle = fopen(public_path() . "/csv/" . $table .'.csv','r')) !== FALSE)
+        {
+            $data = fgetcsv($handle, 1000, ',');
+            while (($data = fgetcsv($handle, 1000, ',')) !==FALSE)
+            {
+
+                $scifi = new \App\Items();
+                $scifi->id = $data[0];
+                $scifi->product_name = $data[1];
+                //$scifi->potency = $data[1];
+                $scifi->hsn_code = $data[2];
+                $scifi->mfg_code = $data[3];
+                $scifi->short_name = $data[4];
+                $scifi->save();
+            }
+            fclose($handle);
+        }
+
+        return "Implemented";
+    }
+
     public function search_ajax(){
 
         $search = request('term');
