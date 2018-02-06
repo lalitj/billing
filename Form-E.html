@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<div class="container">
+
+    <div class="" ng-app="myApp" ng-controller="myCtrl">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Stock ID</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Discount</th>
+            <th>GST</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="item in items">
+            <td scope="row">{{index}}</td>
+            <td><input type="text" class="form-control" name=""   aria-describedby="helpId" placeholder=""></td>
+
+			<td><input type="text" class="form-control" ng-model="item.quantity"  aria-describedby="helpId" placeholder=""></td>
+            <td><input type="text" class="form-control"  ng-model="item.rate" name=""  aria-describedby="helpId" placeholder=""></td>
+            <td><input type="text" class="form-control" ng-model="item.discount" name=""  aria-describedby="helpId" placeholder=""></td>
+            <td><input type="text" class="form-control"  ng-model="item.gst"  name=""  aria-describedby="helpId" placeholder=""></td>
+			
+            <td><label>{{famount(item)}}</label></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+        /*$scope.records = [
+            "Alfreds Futterkiste",
+            "Berglunds snabbköp",
+            "Centro comercial Moctezuma",
+            "Ernst Handel",
+            "Ernst Handel1",
+            "Ernst Handel2",
+        ]*/
+		$scope.parseInt = parseInt;
+
+        $scope.items = [
+            {
+                "stock_id" :"" ,
+                "quantity" : 10,
+                "rate" : 10,
+                "discount" : 5,
+                "gst": 5,
+                "amount" : 20,
+            },
+            {
+                "stock_id" :"" ,
+                "quantity" : 10,
+                "rate" : 10,
+                "discount" : 5,
+                "gst": 5,
+                "amount" : 20,
+            },
+            {
+                "stock_id" :"" ,
+                "quantity" : 10,
+                "rate" : 10,
+                "discount" : 5,
+                "gst": 5,
+                "amount" : 20,
+            },
+            {
+                "stock_id" :"" ,
+                "quantity" : 10,
+                "rate" : 10,
+                "discount" : 5,
+                "gst": 5,
+                "amount" : 20,
+            },
+            {
+                "stock_id" :"" ,
+                "quantity" : 10,
+                "rate" : 10,
+                "discount" : 5,
+                "gst": 5,
+                "amount" : 20,
+            }
+
+        ]
+
+        $scope.famount = function(item){
+            var output = 0;
+            if(item.quantity && item.rate){
+                output = item.quantity * item.rate;
+            }
+
+            if(item.discount){
+                var discount = Math.round(output * item.discount)/100;
+                output = output - discount;
+            }
+
+            if(item.gst){
+                var gst = Math.round(output * item.gst)/100;
+                output = output + gst;
+            }
+
+            return output;
+        }
+		/*$scope.result=function(){
+			$scope.discount= "rate*discount/100";
+			$scope.gst= "rate*gst/100"; 
+			$scope.amount= ""; 
+			}*/
+		/*$scope.amount = function(){
+			if($scope.rate-discount){
+				 $scope.rate-discount + parseInt($scope.gst);
+			} else {
+				return false;
+			}
+		}*/
+    });
+</script>
+</body>
+</html>
