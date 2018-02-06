@@ -21,7 +21,7 @@ class BillsController extends CRUDController
     {
         $data = Bills::create(request()->all());
         if($data){
-            return redirect("/bill/items/". $data['id']);
+            return redirect("/bill/items-all/". $data['id']);
         }
         return $data;
     }

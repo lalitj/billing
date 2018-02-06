@@ -21,7 +21,7 @@ class CreateItemsTable extends Migration
             $table->integer('hsn_code');
             $table->string('mfg_code');
             $table->string('gst')->nullable();
-            $table->string('short_name');
+            $table->string('short_name')->nullable();
             $table->timestamps();
         });
     }

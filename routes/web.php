@@ -31,8 +31,11 @@ Route::resource("items", "ItemsController");
 Route::get('search-ajax','ItemsController@search_ajax');
 Route::resource("stocks", "StocksController");
 
+
 Route::get("bill/items/{bill}", "BillItemsController@create");
 Route::get("bill/print/{bills}", "BillsController@print_output");
+Route::get("bill/items-all/{bills}", "BillItemsController@bill_items");
+Route::post('bill-items-all', 'BillItemsController@storeall');
 
 
  Route::get('csv/{table}', "CRUDController@csv");
