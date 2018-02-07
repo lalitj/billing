@@ -28,9 +28,10 @@ class Bill_items extends CRUDModel
             'stock_id' => [
                 "type" => "select",
                 "label" => "Stock",
-                "options" => [1,2],
+                "options" =>  Stocks::array_data('id'),
                 "text" => "",
-                "value" => []
+                "value" => [],
+                "class" => "selectize"
             ],
             'quantity' => [
                 "type" => "number",

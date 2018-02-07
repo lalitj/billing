@@ -67,10 +67,39 @@ class Stocks extends CRUDModel
         return $form;
     }
 
+    public function item(){
+
+        return $this->hasOne(Items::class, 'id', 'item_id');
+
+
+    }
+
     public function items(){
 
         return $this->hasOne(Items::class, 'id', 'item_id');
 
+
+    }
+
+    static function array_data($name = "name"){
+        /*   $users = $this->users;*/
+
+        /*$company_id = auth()->user()->company_id;
+
+        if ($company_id == 3) {
+
+            $data = static::select('name', 'id')->get();
+        } else {
+            $data = static::select('name', 'id')->where('id', $company_id)->get();
+        }*/
+
+        $data = static::select('*')->get();
+        $new_data = ["" => "Select"];
+        foreach($data as $item){
+            $new_data[$item->id] = $item->item->product_name;
+        }
+
+        return $new_data;
 
     }
 }
