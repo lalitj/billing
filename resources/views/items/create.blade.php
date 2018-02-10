@@ -31,7 +31,7 @@
 
                         <tbody>
 
-                        {{--<% stock_items %>--}}
+                        <% items %>
                         <tr ng-repeat="item in items">
                             <td scope="row"><% $index+1 %></td>
                             <td>
@@ -55,10 +55,8 @@
                             <td><input type="number" ng-required="item.stock_id.code || $index == 0" class="form-control" max="<% item.stock_id.available %>" ng-model="item.quantity" name="quantity[]" aria-describedby="helpId" placeholder=""></td>
                             <td><input type="number" ng-required="item.stock_id.code" class="form-control" step="0.50" max="<% item.stock_id.mrp %>" ng-model="item.rate" name="rate[]" aria-describedby="helpId" placeholder=""></td>
                             <td><input type="number" class="form-control" max="100" ng-model="item.discount" name="discount[]" aria-describedby="helpId" placeholder=""></td>
-                            <td>{{--<input type="text" class="form-control" ng-model="item.gst" name="gst[]" aria-describedby="helpId" placeholder="" value="<% item.stock_id.gst %>"><% item.stock_id.gst %>--}}
-                            </td>
                             <td> <% item.stock_id.gst %><input type="hidden" value=" <% item.stock_id.gst %>" name="gst[]"></td>
-                            <td><%  famount(item)  %><input type="hidden" value="<% item.amount %>" name="amount[]"></td>
+                            <td>Amount: <%  item.amount  %><input type="hidden" value="<% item.amount %>" name="amount[]"></td>
                             <td>
                                 <a name="" ng-click="add()" id="" class="btn btn-primary" href="#" role="button">+</a>
                             </td>
@@ -123,13 +121,13 @@
 
                     $scope.items = [
                         {
-                            "stock_id": {"available": 0, "mrp": 0},
+                            "stock_id": {"available": 0, "mrp": 0, "gst" : 0},
                             "quantity": "",
                             "rate": "",
                             "discount": "",
                             "gst": "",
-                            "amount": "",
-                        },
+                            "amount": 0,
+                        }/*,
                         {
                             "stock_id": "",
                             "quantity": "",
@@ -161,7 +159,7 @@
                             "discount": "",
                             "gst": "",
                             "amount": ""
-                        }
+                        }*/
                     ];
 
                     $scope.cgst = 0;
@@ -191,6 +189,34 @@
 
                         var gst = 0;
                         if (item.stock_id.gst) {
+
+                            gst = Math.round(output * item.stock_id.gst) / 100;
+                            output = output + gst;
+
+
+                        }
+
+                        item.gst_val = gst;
+
+                        item.amount = output;
+
+                        return output;
+                    }
+
+                    $scope.famount = function (item) {
+                        var output = 0;
+                        if (item.quantity && item.rate) {
+                            output = item.quantity * item.rate;
+                        }
+
+                        if (item.discount) {
+
+                            var discount = Math.round(output * item.discount) / 100;
+                            output = output - discount;
+                        }
+
+                        var gst = 0;
+                        if ( item.stock_id.gst) {
 
                             gst = Math.round(output * item.stock_id.gst) / 100;
                             output = output + gst;
