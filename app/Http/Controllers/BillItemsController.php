@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bill_items;
 use App\BillItems;
+use App\Bills;
 use App\Items;
 use App\Stocks;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class BillItemsController extends CRUDController
             "name" => "stock_id",
             "type" => "select",
             "label" => "Stock",
-            "options" => Stocks::array_data('id'),
+            "options" => Stocks::object_data(),
             "text" => "",
             "value" => [],
             "class" => "selectize"
@@ -45,20 +46,33 @@ class BillItemsController extends CRUDController
     }
 
     public function storeall(){
-        $data = request()->all();
-
+        return $data = request()->all();
         $single_data = [];
-        foreach (["quantity", "rate", "discount", "gst","amount"] as $item_a) {
+        foreach (["quantity", "rate", "discount", "gst","amount"] as $item_a) {//repeated items array
             foreach ($data[$item_a] as $key => $item) {
+                if($key == "discount" && !$item){
+                    $item = 0;
+                }
                 $single_data[$key][$item_a] = $item;
+
             }
         }
 
         foreach($single_data as $one_data){
-            $one_data['bill_id'] = $data['bill_id'];
-            $one_data['stock_id'] = 1;
-            BillItems::create($one_data);
+            if(count(array_filter($one_data))) {
+                $one_data['bill_id'] = $data['bill_id'];
+                $one_data['stock_id'] = 1;
+                //BillItems::create($one_data);
+            }
         };
+        return $bill_data=[
+            'cgst_amount' => $data['cgst_amount'],
+            'sgst_amount' => $data['sgst_amount'],
+            'total_amount' => $data['total_amount']
+            ];
+
+            Bills::where( 'id',$data['bill_id'])->update($bill_data);
+
 
 
         session()->flash('success', " Bill Created successfully");

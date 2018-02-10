@@ -43,6 +43,7 @@ $factory->define(App\Items::class, function (Faker $faker) {
         'hsn_code' => $faker->randomDigit,
         'mfg_code' => $faker->name,
         'gst' => $faker->numberBetween(5,10),
+        'available' => $faker->numberBetween(50,100),
     ];
 });
 $factory->define(App\Stocks::class, function (Faker $faker) {
