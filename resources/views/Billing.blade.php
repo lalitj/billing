@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col">GST No.06555525855</div>
             <div class="col text-center"></div>
-            <div class="col text-right"></div>
+            <div class="col text-right">01662298680</div>
         </div>
         <div class="row">
             <div class="col text-center"><h3>HARYANA HOMOEOPATHIC STORE</h3></div>
